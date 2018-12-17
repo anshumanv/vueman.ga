@@ -1,7 +1,7 @@
 <template>
   <div>
     <MangaHeader :manga="manga" />
-    <MangaList :chapters="manga.chapters" :name="manga.title"/>
+    <MangaList :chapters="manga.chapters" :name="manga.title" :mangaId="mangaId" />
   </div>
 </template>
 
@@ -17,15 +17,17 @@ export default {
   name: 'Manga',
   data() {
     return {
-      manga: {}
+      manga: {},
+      mangaId: ''
     }
   },
   components: {
     MangaHeader,
     MangaList
   },
-  beforeCreate() {
+  created() {
     const mangaId = window.location.pathname.split('/')[2]
+    this.mangaId = mangaId
     axios.get(`https://www.mangaeden.com/api/manga/${mangaId}/`)
       .then(( { data } ) => this.manga = data)
   }

@@ -21,7 +21,7 @@ export default new Router({
       component: Manga
     },
     {
-      path: "/manga/:chapter",
+      path: "/manga/:mangaId/chapter/:chapterId",
       name: "MangaChapter",
       component: MangaChapter
     },

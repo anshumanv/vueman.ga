@@ -20,21 +20,17 @@
 
         <v-list two-line subheader>
           <v-subheader inset>Chapters</v-subheader>
-
           <v-list-tile
             v-for="chapter in chapters"
             :key="chapter.title"
             avatar
-            @click=""
           >
-            
-
-            <v-list-tile-content>
-              <v-list-tile-title>{{ chapter['2'] }}</v-list-tile-title>
-              <v-list-tile-sub-title>{{ chapter.subtitle }}</v-list-tile-sub-title>
-            </v-list-tile-content>
-
-            
+            <router-link :to="`/manga/${mangaId}/chapter/${chapter['3']}`">
+              <v-list-tile-content>
+                <v-list-tile-sub-title>{{ chapter['0'] }}</v-list-tile-sub-title>
+                <v-list-tile-title>{{ chapter['2'] }}</v-list-tile-title>
+              </v-list-tile-content>
+            </router-link>
           </v-list-tile>
 
 
@@ -59,7 +55,7 @@ export default {
       }
     },
     name: 'MangaList',
-    props: ['chapters', 'name']
+    props: ['chapters', 'name', 'mangaId']
   }
 </script>
 
