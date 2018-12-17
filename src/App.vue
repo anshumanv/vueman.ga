@@ -10,7 +10,7 @@
         v-on:click="toHome"
         flat
       >
-        <span  class="mr-2">Home</span>
+        <span ><v-icon>home</v-icon></span>
       </v-btn>
     </v-toolbar>
 
@@ -44,3 +44,10 @@ export default {
   }
 }
 </script>
+
+<style>
+a {
+  text-decoration: none;
+}
+</style>
+
