@@ -1,17 +1,22 @@
 <template>
   <div>
     <MangaHeader />
-    <MangaList />
+    <MangaList name="One Piece"/>
   </div>
 </template>
 
 
 <script>
-import MangaHeader from '../views/MangaHeader'
-import MangaList from '../views/MangaList'
+import MangaHeader from '../components/MangaHeader'
+import MangaList from '../components/MangaList'
 
 export default {
   name: 'Manga',
+  data() {
+    return {
+      name: 'One Piece'
+    }
+  },
   components: {
     MangaHeader,
     MangaList

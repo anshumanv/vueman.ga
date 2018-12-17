@@ -1,7 +1,8 @@
 import Vue from "vue";
 import Router from "vue-router";
 import Home from "./views/Home.vue";
-import Manga from "./components/Manga.vue";
+import Manga from "./views/Manga.vue";
+import MangaChapter from "./views/MangaChapter.vue";
 
 Vue.use(Router);
 
@@ -18,6 +19,11 @@ export default new Router({
       path: "/manga",
       name: "manga",
       component: Manga
+    },
+    {
+      path: "/manga/:anime/:chapter",
+      name: "MangaChapter",
+      component: MangaChapter
     },
     {
       path: "/about",
