@@ -1,12 +1,21 @@
 <template>
   <v-container grid-list-md text-xs-center>
     <v-layout column no-wrap>
+      <v-layout row wrap>
+        <v-flex>
+          {{ manga.title }} / Chapter {{ chapter }} / Page {{ page }}
+        </v-flex>
+      </v-layout>
       <v-flex xs12>
         <!-- Add a loader till the image is being fetched -->
         <v-img :src="`https://cdn.mangaeden.com/mangasimg/${pages[page-1]['1']}`"></v-img> 
       </v-flex>
       <div class="chapter-bottom">
+        <!-- <v-layout>
+
+        </v-layout> -->
         <v-flex align-self-center>
+          <!-- <v-img width="50px" :src="`https://cdn.mangaeden.com/mangasimg/${manga.image}`"></v-img>  -->
           {{ manga.title }}
         </v-flex>
         <v-flex>
