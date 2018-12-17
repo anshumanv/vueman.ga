@@ -1,13 +1,17 @@
 <template>
-  <HelloWorld />
+  <div>
+    <HelloWorld />
+    <MangaCards />
+  </div>
 </template>
 
 <script>
   import HelloWorld from '../components/HelloWorld'
-
+  import MangaCards from '../components/MangaCards'
   export default {
     components: {
-      HelloWorld
+      HelloWorld,
+      MangaCards
     }
   }
 </script>

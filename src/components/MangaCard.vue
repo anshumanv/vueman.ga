@@ -1,0 +1,25 @@
+<template>
+  <div class="manga-card">
+    <div class="manga-img-container">
+      <v-img class="manga-img" :src="`https://cdn.mangaeden.com/mangasimg/${manga.im}`" ></v-img>
+    </div>
+    <h5>{{ manga.t }}</h5>
+  </div>
+</template>
+
+<script>
+export default {
+  name: 'MangaCard',
+  props: ['manga']
+}
+</script>
+
+
+<style scoped>
+.manga-card {
+  margin: 0.5rem;
+}
+
+
+</style>
+

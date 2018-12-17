@@ -49,9 +49,9 @@
 
 import axios from 'axios';
 
-axios.get('https://www.mangaeden.com/api/list/0/?p=10').then(
-  res => console.log(res)
-)
+// axios.get('https://www.mangaeden.com/api/list/0/').then(
+//   res => console.log(res)
+// )
 
 export default {
     data () {
