@@ -30,7 +30,7 @@
             
 
             <v-list-tile-content>
-              <v-list-tile-title>{{ chapter.title }}</v-list-tile-title>
+              <v-list-tile-title>{{ chapter['2'] }}</v-list-tile-title>
               <v-list-tile-sub-title>{{ chapter.subtitle }}</v-list-tile-sub-title>
             </v-list-tile-content>
 
@@ -56,15 +56,10 @@ import axios from 'axios';
 export default {
     data () {
       return {
-        chapters: [
-          { icon: 'folder', iconClass: 'grey lighten-1 white--text', title: 'Photos', subtitle: 'Jan 9, 2014' },
-          { icon: 'folder', iconClass: 'grey lighten-1 white--text', title: 'Recipes', subtitle: 'Jan 17, 2014' },
-          { icon: 'folder', iconClass: 'grey lighten-1 white--text', title: 'Work', subtitle: 'Jan 28, 2014' }
-        ],
       }
     },
     name: 'MangaList',
-    props: ['name']
+    props: ['chapters', 'name']
   }
 </script>
 

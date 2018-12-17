@@ -1,7 +1,7 @@
 <template>
   <v-container grid-list-md text-xs-center>
     <v-layout row wrap>
-      <v-flex v-for="manga in mangas" :key="manga.i" xs2>
+      <v-flex v-for="manga in mangas" :key="manga.i" xs3>
         <MangaCard :manga=manga />
       </v-flex>
     </v-layout>
@@ -24,7 +24,7 @@ export default {
   },
   created() {
     axios.get('https://www.mangaeden.com/api/list/0/?p=2')
-      .then(({ data }) => this.mangas = data.manga.slice(0, 20))
+      .then(({ data }) => this.mangas = data.manga.slice(30, 40))
   }
 }
 </script>

@@ -3,7 +3,7 @@
     <div class="manga-img-container">
       <v-img class="manga-img" :src="`https://cdn.mangaeden.com/mangasimg/${manga.im}`" ></v-img>
     </div>
-    <h5>{{ manga.t }}</h5>
+    <router-link :to="`/manga/${manga.i}`">{{ manga.t }}</router-link>
   </div>
 </template>
 

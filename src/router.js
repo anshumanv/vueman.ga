@@ -16,12 +16,12 @@ export default new Router({
       component: Home
     },
     {
-      path: "/manga",
+      path: "/manga/:mangaId",
       name: "manga",
       component: Manga
     },
     {
-      path: "/manga/:anime/:chapter",
+      path: "/manga/:chapter",
       name: "MangaChapter",
       component: MangaChapter
     },
