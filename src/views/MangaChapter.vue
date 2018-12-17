@@ -1,16 +1,27 @@
 <template>
-  <div>
-    <!-- Add a loader till the image is being fetched -->
-    <v-img :src="`https://cdn.mangaeden.com/mangasimg/${pages[page-1]['1']}`"></v-img> 
-    <button v-on:click="prevPage">Prev</button>
-    <button v-on:click="nextPage">Next</button>
+  <v-container grid-list-md text-xs-center>
+    <v-layout column no-wrap>
+      <v-flex xs12>
+        <!-- Add a loader till the image is being fetched -->
+        <v-img :src="`https://cdn.mangaeden.com/mangasimg/${pages[page-1]['1']}`"></v-img> 
+      </v-flex>
+      <div class="chapter-bottom">
+        <v-flex align-self-center>
+          {{ manga.title }}
+        </v-flex>
+        <v-flex>
+          <v-btn v-on:click="prevPage" color="#212121">PREV</v-btn>
+          <v-btn v-on:click="nextPage" color="#212121">NEXT</v-btn>
+        </v-flex>
+      </div>
     <div class="text-xs-center">
       <v-pagination
         v-model="page"
         :length="pages.length"
       ></v-pagination>
     </div>
-  </div>
+    </v-layout>
+  </v-container>
 </template>
 
 
@@ -52,7 +63,7 @@ export default {
 
       })
 
-
+    // Get the anime pages and set them to the state
     axios.get(`https://www.mangaeden.com/api/chapter/${chapterId}/`)
       .then(( { data: { images } } ) => this.pages = images.reverse())
 
@@ -61,6 +72,10 @@ export default {
 </script>
 
 <style scoped>
+.chapter-bottom {
+  display: flex;
+}
+
 
 </style>
 
