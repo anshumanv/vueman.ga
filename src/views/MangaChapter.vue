@@ -2,7 +2,9 @@
   <div>
     <div>{{ anime }}</div>
     <div>{{ chapter }}</div>
-    <v-img src="https://picsum.photos/510/300?random" contain></v-img>
+    <v-img :src="`https://cdn.mangaeden.com/mangasimg/${pages[page]['1']}`" contain></v-img>
+    <button v-on:click="prevPage">Prev</button>
+    <button v-on:click="nextPage">Next</button>
   </div>
 </template>
 
@@ -15,9 +17,19 @@ export default {
   props: ['anime', 'chapter'],
   data() {
     return {
-      page: 1,
+      page: 0,
       pages: [],
       chapters: [],
+    }
+  },
+  methods: {
+    nextPage: function() {
+      if(this.pages.length > this.page)
+        this.page++
+    },
+    prevPage: function() {
+      if(this.page > 0)
+        this.page--
     }
   },
   created() {
