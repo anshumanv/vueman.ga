@@ -25,7 +25,7 @@ export default {
   created() {
     axios
       .get("https://www.mangaeden.com/api/list/0/?p=2")
-      .then(({ data }) => (this.mangas = data.manga.slice(30, 40)));
+      .then(({ data }) => (this.mangas = data.manga.slice(0, 100)));
   }
 };
 </script>

@@ -2,7 +2,17 @@
   <v-container grid-list-md>
     <v-layout row align-end>
       <v-flex xs6>
-        <v-img :src="`https://cdn.mangaeden.com/mangasimg/${manga.image}`"></v-img>
+        <v-img :src="`https://cdn.mangaeden.com/mangasimg/${manga.image}`" class="grey lighten-2">
+          <v-layout
+            slot="placeholder"
+            fill-height
+            align-center
+            justify-center
+            ma-0
+          >
+            <v-progress-circular indeterminate color="grey lighten-5"></v-progress-circular>
+          </v-layout>
+        </v-img>
       </v-flex>
       <v-flex class="ml-3">
         <v-layout column>

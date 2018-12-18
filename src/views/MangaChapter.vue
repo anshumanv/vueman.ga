@@ -10,7 +10,17 @@
         <!-- Add a loader till the image is being fetched -->
         <v-img
           :src="`https://cdn.mangaeden.com/mangasimg/${pages[page - 1]['1']}`"
-        ></v-img>
+        >
+          <v-layout
+            slot="placeholder"
+            fill-height
+            align-center
+            justify-center
+            ma-0
+          >
+            <v-progress-circular indeterminate color="grey lighten-5"></v-progress-circular>
+          </v-layout>
+        </v-img>
       </v-flex>
       <div class="chapter-bottom">
         <!-- <v-layout>
