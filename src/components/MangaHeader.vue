@@ -7,7 +7,7 @@
       <v-flex class="ml-3">
         <v-layout column>
           <v-flex>
-            <div class="display-2">
+            <div class="display-1">
               {{ manga.title }}
             </div>
           </v-flex>
