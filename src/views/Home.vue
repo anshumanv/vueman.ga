@@ -6,12 +6,12 @@
 </template>
 
 <script>
-  import HelloWorld from '../components/HelloWorld'
-  import MangaCards from '../components/MangaCards'
-  export default {
-    components: {
-      HelloWorld,
-      MangaCards
-    }
+import HelloWorld from "../components/HelloWorld";
+import MangaCards from "../components/MangaCards";
+export default {
+  components: {
+    HelloWorld,
+    MangaCards
   }
+};
 </script>

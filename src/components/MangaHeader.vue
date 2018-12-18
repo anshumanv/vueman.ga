@@ -1,16 +1,12 @@
 <template>
-    <div>
-      {{ manga.title }}
-    </div>
+  <div>{{ manga.title }}</div>
 </template>
 
 <script>
 export default {
-  name: 'MangaHeader',
-  props: ['manga']
-}
+  name: "MangaHeader",
+  props: ["manga"]
+};
 </script>
 
-<style scoped>
-
-</style>
+<style scoped></style>

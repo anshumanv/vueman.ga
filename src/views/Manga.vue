@@ -1,39 +1,41 @@
 <template>
   <div>
     <MangaHeader :manga="manga" />
-    <MangaList :chapters="manga.chapters" :name="manga.title" :mangaId="mangaId" />
+    <MangaList
+      :chapters="manga.chapters"
+      :name="manga.title"
+      :mangaId="mangaId"
+    />
   </div>
 </template>
 
-
 <script>
-import axios from 'axios'
-import MangaHeader from '../components/MangaHeader'
-import MangaList from '../components/MangaList'
+import axios from "axios";
+import MangaHeader from "../components/MangaHeader";
+import MangaList from "../components/MangaList";
 
-const mangaId = window.location.pathname.split('/')[2]
+const mangaId = window.location.pathname.split("/")[2];
 
 export default {
-  name: 'Manga',
+  name: "Manga",
   data() {
     return {
       manga: {},
-      mangaId: ''
-    }
+      mangaId: ""
+    };
   },
   components: {
     MangaHeader,
     MangaList
   },
   created() {
-    const mangaId = window.location.pathname.split('/')[2]
-    this.mangaId = mangaId
-    axios.get(`https://www.mangaeden.com/api/manga/${mangaId}/`)
-      .then(( { data } ) => this.manga = data)
+    const mangaId = window.location.pathname.split("/")[2];
+    this.mangaId = mangaId;
+    axios
+      .get(`https://www.mangaeden.com/api/manga/${mangaId}/`)
+      .then(({ data }) => (this.manga = data));
   }
-}
+};
 </script>
 
-<style scoped>
-
-</style>
+<style scoped></style>
