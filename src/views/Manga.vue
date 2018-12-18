@@ -1,11 +1,18 @@
 <template>
   <div>
     <MangaHeader :manga="manga" />
-    <MangaList
-      :chapters="manga.chapters"
-      :name="manga.title"
-      :mangaId="mangaId"
-    />
+    <v-container>
+      <v-layout row>
+        <v-flex xs3>
+          <MangaInfo :manga="manga"></MangaInfo>
+        </v-flex>
+        <MangaList
+          :chapters="manga.chapters"
+          :name="manga.title"
+          :mangaId="mangaId"
+        />
+      </v-layout>
+    </v-container>
   </div>
 </template>
 
@@ -13,6 +20,7 @@
 import axios from "axios";
 import MangaHeader from "../components/MangaHeader";
 import MangaList from "../components/MangaList";
+import MangaInfo from "../components/MangaInfo";
 
 const mangaId = window.location.pathname.split("/")[2];
 
@@ -26,7 +34,8 @@ export default {
   },
   components: {
     MangaHeader,
-    MangaList
+    MangaList,
+    MangaInfo
   },
   created() {
     const mangaId = window.location.pathname.split("/")[2];

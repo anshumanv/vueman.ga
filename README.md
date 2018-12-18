@@ -11,7 +11,7 @@
 
 </p>
 
-<p align="center">A manga reader and management toll built with Vue.js</p>
+<p align="center">A manga reader and management tool built with Vue.js</p>
 
 
 
@@ -41,9 +41,7 @@ yarn run lint
 ```
 
 
-PS:
-
-My futile attempt of exploring Vue.js, React always ❤️
+PS: My futile attempt of exploring Vue.js.
 
 
 #### Thanks
