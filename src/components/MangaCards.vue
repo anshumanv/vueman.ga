@@ -14,19 +14,10 @@ import MangaCard from "./MangaCard";
 
 export default {
   name: "MangaCards",
+  props: ['mangas'],
   components: {
     MangaCard
   },
-  data() {
-    return {
-      mangas: []
-    };
-  },
-  created() {
-    axios
-      .get("https://www.mangaeden.com/api/list/0/?p=2")
-      .then(({ data }) => (this.mangas = data.manga.slice(0, 100)));
-  }
 };
 </script>
 
