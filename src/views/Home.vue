@@ -28,6 +28,9 @@
       </v-flex>
     </v-layout>
     <MangaCards :mangas="mangas" />
+    <v-flex class="text-xs-center">
+     <v-btn v-on:click="loadMore" color="#212121">MORE</v-btn>
+    </v-flex>
   </v-container>
 </template>
 
@@ -41,21 +44,24 @@ export default {
       allMangas: [],
       search: '',
       model: null,
-      titles: [],
+      page: 1
     }
   },
   components: {
     MangaCards
   },
+  methods: {
+    loadMore: function() {
+      const newMangas = this.allMangas.slice(12*this.page+1, 12*this.page+13)
+      this.mangas.push(...newMangas);
+      this.page++
+    }
+  },
   created() {
     axios
       .get("https://www.mangaeden.com/api/list/0/")
       .then(({ data }) => {
-        const titles = []
-        data.manga.forEach(manga => titles.push(manga.t))
-        this.titles = titles
         this.allMangas = data.manga;
-        console.log(titles)
         this.mangas = data.manga.slice(0, 12)
       });
   },
