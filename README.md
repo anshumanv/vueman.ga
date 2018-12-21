@@ -13,7 +13,9 @@
 
 <p align="center">A manga reader and management tool built with Vue.js</p>
 
+## Demo
 
+🔥 http://vueman.ga 🔥 https://vuemanga.netlify.com 🔥
 
 ## Project setup
 ```
