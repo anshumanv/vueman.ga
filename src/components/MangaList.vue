@@ -2,8 +2,14 @@
   <v-layout row>
     <v-flex ml-5>
       <v-card>
+        <v-toolbar>
+          <v-toolbar-title>Chapters</v-toolbar-title>
+          <v-spacer></v-spacer>
+          <v-btn icon>
+            <v-icon>search</v-icon>
+          </v-btn>
+        </v-toolbar>
         <v-list dense two-line subheader>
-          <v-subheader inset>Chapters</v-subheader>
           <v-list-tile v-for="chapter in chapters" :key="chapter.title" @click="openManga(chapter['3'])">
             <!-- <router-link :to="`/manga/${mangaId}/chapter/${chapter['3']}`"> -->
               <v-list-tile-content>
