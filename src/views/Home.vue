@@ -1,13 +1,10 @@
 <template>
   <v-container>
     <div class="loader" v-if="!mangas.length">
-      <v-progress-circular
-        indeterminate
-        color="white"
-      ></v-progress-circular>
+      <v-progress-circular indeterminate color="white"></v-progress-circular>
     </div>
     <div v-else>
-      <v-layout column align-center justify-center >
+      <v-layout column align-center justify-center>
         <v-flex mb-4>
           <h1 class="display-2 font-weight-light ma-3">vueman.ga</h1>
         </v-flex>
@@ -29,46 +26,47 @@
       </v-layout>
       <MangaCards :mangas="mangas" />
       <v-flex class="text-xs-center">
-      <v-btn v-on:click="loadMore" color="#212121">MORE</v-btn>
+        <v-btn v-on:click="loadMore" color="#212121">MORE</v-btn>
       </v-flex>
     </div>
   </v-container>
 </template>
 
 <script>
-import axios from 'axios'
+import axios from "axios";
 import MangaCards from "../components/MangaCards";
 export default {
   data() {
     return {
       mangas: [],
       allMangas: [],
-      search: '',
+      search: "",
       model: null,
       page: 1
-    }
+    };
   },
   components: {
     MangaCards
   },
   methods: {
     loadMore: function() {
-      const newMangas = this.allMangas.slice(12*this.page+1, 12*this.page+13)
+      const newMangas = this.allMangas.slice(
+        12 * this.page + 1,
+        12 * this.page + 13
+      );
       this.mangas.push(...newMangas);
-      this.page++
+      this.page++;
     }
   },
   created() {
-    axios
-      .get("https://www.mangaeden.com/api/list/0/")
-      .then(({ data }) => {
-        this.allMangas = data.manga;
-        this.mangas = data.manga.slice(0, 24)
-      });
+    axios.get("https://www.mangaeden.com/api/list/0/").then(({ data }) => {
+      this.allMangas = data.manga;
+      this.mangas = data.manga.slice(0, 24);
+    });
   },
   watch: {
     model(manga) {
-      this.$router.replace(`/manga/${manga.i}`)
+      this.$router.replace(`/manga/${manga.i}`);
     }
   }
 };
@@ -86,4 +84,3 @@ export default {
   width: 50vw;
 }
 </style>
-

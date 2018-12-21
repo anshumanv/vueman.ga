@@ -25,12 +25,14 @@
       </v-flex>
       <v-flex class="info-item">
         <div class="font-weight-bold body-2">Created</div>
-        <div class="caption">{{ (new Date(manga.created)).toDateString() }}</div>
+        <div class="caption">{{ new Date(manga.created).toDateString() }}</div>
       </v-flex>
       <!-- TOdo: Fix the dates so actual dates are displayed -->
       <v-flex class="info-item">
         <div class="font-weight-bold body-2">Last Chapter</div>
-        <div class="caption">{{ (new Date(manga.last_chapter_date)).toDateString()  }}</div>
+        <div class="caption">
+          {{ new Date(manga.last_chapter_date).toDateString() }}
+        </div>
       </v-flex>
     </v-layout>
   </v-container>
@@ -38,15 +40,14 @@
 
 <script>
 export default {
-  name: 'MangaInfo',
-  props: ['manga'],
-}
+  name: "MangaInfo",
+  props: ["manga"]
+};
 </script>
 
 <style scoped>
 .info-item {
   display: flex;
-  justify-content: space-between
+  justify-content: space-between;
 }
 </style>
-

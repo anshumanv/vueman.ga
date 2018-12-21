@@ -1,10 +1,7 @@
 <template>
   <v-container grid-list-md text-xs-center>
     <div class="loader" v-if="!pages.length">
-      <v-progress-circular
-        indeterminate
-        color="white"
-      ></v-progress-circular>
+      <v-progress-circular indeterminate color="white"></v-progress-circular>
     </div>
     <v-layout column no-wrap v-else>
       <v-layout row wrap>
@@ -24,7 +21,10 @@
             justify-center
             ma-0
           >
-            <v-progress-circular indeterminate color="grey lighten-5"></v-progress-circular>
+            <v-progress-circular
+              indeterminate
+              color="grey lighten-5"
+            ></v-progress-circular>
           </v-layout>
         </v-img>
       </v-flex>

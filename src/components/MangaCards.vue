@@ -9,15 +9,14 @@
 </template>
 
 <script>
-import axios from "axios";
 import MangaCard from "./MangaCard";
 
 export default {
   name: "MangaCards",
-  props: ['mangas'],
+  props: ["mangas"],
   components: {
     MangaCard
-  },
+  }
 };
 </script>
 

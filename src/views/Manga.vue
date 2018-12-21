@@ -1,18 +1,13 @@
 <template>
   <div>
     <div class="loader" v-if="!manga.title">
-      <v-progress-circular
-        indeterminate
-        color="white"
-      ></v-progress-circular>
+      <v-progress-circular indeterminate color="white"></v-progress-circular>
     </div>
     <div v-else>
       <MangaHeader :manga="manga" />
       <v-container>
         <v-layout row>
-          <v-flex xs3>
-            <MangaInfo :manga="manga"></MangaInfo>
-          </v-flex>
+          <v-flex xs3> <MangaInfo :manga="manga"></MangaInfo> </v-flex>
           <MangaList
             :chapters="manga.chapters"
             :name="manga.title"
@@ -30,7 +25,7 @@ import MangaHeader from "../components/MangaHeader";
 import MangaList from "../components/MangaList";
 import MangaInfo from "../components/MangaInfo";
 
-const mangaId = window.location.pathname.split("/")[2];
+// const mangaId = window.location.pathname.split("/")[2];
 
 export default {
   name: "Manga",

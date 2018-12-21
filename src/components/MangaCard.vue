@@ -13,12 +13,17 @@
           justify-center
           ma-0
         >
-          <v-progress-circular indeterminate color="grey lighten-5"></v-progress-circular>
-          </v-layout>
+          <v-progress-circular
+            indeterminate
+            color="grey lighten-5"
+          ></v-progress-circular>
+        </v-layout>
       </v-img>
     </router-link>
     <router-link :to="`/manga/${manga.i}`" :title="manga.t">
-      <div class="subheading font-weight-medium white--text text-truncate">{{ manga.t }}</div>
+      <div class="subheading font-weight-medium white--text text-truncate">
+        {{ manga.t }}
+      </div>
     </router-link>
   </div>
 </template>

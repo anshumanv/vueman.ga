@@ -2,7 +2,10 @@
   <v-container grid-list-md>
     <v-layout row align-end>
       <v-flex xs6>
-        <v-img :src="`https://cdn.mangaeden.com/mangasimg/${manga.image}`" class="grey lighten-2">
+        <v-img
+          :src="`https://cdn.mangaeden.com/mangasimg/${manga.image}`"
+          class="grey lighten-2"
+        >
           <v-layout
             slot="placeholder"
             fill-height
@@ -10,25 +13,30 @@
             justify-center
             ma-0
           >
-            <v-progress-circular indeterminate color="grey lighten-5"></v-progress-circular>
+            <v-progress-circular
+              indeterminate
+              color="grey lighten-5"
+            ></v-progress-circular>
           </v-layout>
         </v-img>
       </v-flex>
       <v-flex class="ml-3">
         <v-layout column>
           <v-flex>
-            <div class="display-1">
-              {{ manga.title }}
-            </div>
+            <div class="display-1">{{ manga.title }}</div>
           </v-flex>
           <v-layout class="genres mt-1" row>
-            <div v-for="genre in manga.categories" :key="genre" class="text-xs-center">
-              <v-chip color="#212121" class="body-2 white--text">{{ genre }}</v-chip>
+            <div
+              v-for="genre in manga.categories"
+              :key="genre"
+              class="text-xs-center"
+            >
+              <v-chip color="#212121" class="body-2 white--text">{{
+                genre
+              }}</v-chip>
             </div>
           </v-layout>
-          <div class="mt-2">
-            {{ manga.description }}
-          </div>
+          <div class="mt-2">{{ manga.description }}</div>
         </v-layout>
       </v-flex>
     </v-layout>
@@ -47,5 +55,4 @@ export default {
   display: flex;
   flex-wrap: wrap;
 }
-
 </style>

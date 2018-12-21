@@ -5,12 +5,14 @@
         <v-toolbar>
           <v-toolbar-title>Chapters</v-toolbar-title>
           <v-spacer></v-spacer>
-          <v-btn icon>
-            <v-icon>search</v-icon>
-          </v-btn>
+          <v-btn icon> <v-icon>search</v-icon> </v-btn>
         </v-toolbar>
         <v-list dense two-line subheader>
-          <v-list-tile v-for="chapter in chapters" :key="chapter.title" @click="openManga(chapter['3'])">
+          <v-list-tile
+            v-for="chapter in chapters"
+            :key="chapter.title"
+            @click="openManga(chapter['3'])"
+          >
             <v-list-tile-content>
               <v-list-tile-sub-title>{{
                 `Chapter - ${chapter["0"]}`
@@ -25,7 +27,7 @@
 </template>
 
 <script>
-import axios from "axios";
+// import axios from "axios";
 
 // axios.get('https://www.mangaeden.com/api/list/0/').then(
 //   res => console.log(res)
@@ -39,7 +41,7 @@ export default {
   props: ["chapters", "name", "mangaId"],
   methods: {
     openManga: function(chapterId) {
-      this.$router.push(`/manga/${this.mangaId}/chapter/${chapterId}`)
+      this.$router.push(`/manga/${this.mangaId}/chapter/${chapterId}`);
     }
   }
 };
