@@ -8,7 +8,7 @@
     </div>
     <v-layout column no-wrap v-else>
       <v-layout row wrap>
-        <v-flex>
+        <v-flex class="headline font-weight-medium">
           {{ manga.title }} / Chapter {{ chapter }} / Page {{ page }}
         </v-flex>
       </v-layout>
@@ -101,6 +101,5 @@ export default {
   justify-content: center;
   align-items: center;
   height: 100vh;
-  width: 100vw;
 }
 </style>
