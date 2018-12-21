@@ -1,7 +1,7 @@
 <template>
   <v-container grid-list-md text-xs-center>
     <v-layout row wrap>
-      <v-flex v-for="manga in mangas" :key="manga.i" xs3>
+      <v-flex v-for="manga in mangas" :key="manga.i" xs3 grow align-self-end>
         <MangaCard :manga="manga" />
       </v-flex>
     </v-layout>
@@ -21,6 +21,8 @@ export default {
 };
 </script>
 
-<style scoped></style>
-
-4e70ea10c092255ef7004aa2
+<style scoped>
+.manga-flex {
+  align-items: flex-end;
+}
+</style>

@@ -1,9 +1,10 @@
 <template>
   <div class="manga-card">
-    <div class="manga-img-container">
+    <router-link :to="`/manga/${manga.i}`">
       <v-img
         class="manga-img"
         :src="`https://cdn.mangaeden.com/mangasimg/${manga.im}`"
+        height="100%"
       >
         <v-layout
           slot="placeholder"
@@ -15,8 +16,10 @@
           <v-progress-circular indeterminate color="grey lighten-5"></v-progress-circular>
           </v-layout>
       </v-img>
-    </div>
-    <router-link :to="`/manga/${manga.i}`">{{ manga.t }}</router-link>
+    </router-link>
+    <router-link :to="`/manga/${manga.i}`" :title="manga.t">
+      <div class="subheading font-weight-medium white--text text-truncate">{{ manga.t }}</div>
+    </router-link>
   </div>
 </template>
 
