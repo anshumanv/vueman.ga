@@ -19,7 +19,7 @@
             color="gray"
             item-text="t"
             menu-props="openOnClick"
-            placeholder="Start typing to Search"
+            placeholder="Search Manga  🔍"
             return-object
           ></v-autocomplete>
         </v-flex>
@@ -49,6 +49,7 @@ export default {
     MangaCards
   },
   methods: {
+    // TODO: Add cornet case checks for loading more mangas
     loadMore: function() {
       const newMangas = this.allMangas.slice(
         12 * this.page + 1,

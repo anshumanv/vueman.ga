@@ -1,7 +1,7 @@
 <template>
   <v-app dark>
     <v-toolbar app>
-      <v-toolbar-title class="headline text-uppercase">
+      <v-toolbar-title class="headline text-uppercase cursor-pointer" v-on:click="toHome">
         <span>VUEMAN</span> <span class="font-weight-light">.GA</span>
       </v-toolbar-title>
       <v-spacer></v-spacer>
@@ -37,5 +37,9 @@ export default {
 <style>
 a {
   text-decoration: none;
+}
+
+.cursor-pointer:hover {
+  cursor: pointer;
 }
 </style>
