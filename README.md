@@ -15,7 +15,7 @@
 
 ## Demo
 
-🔥 http://vueman.ga 🔥 https://vuemanga.netlify.com 🔥
+🔥 http://vueman.ga 🔥
 
 ## Project setup
 ```
