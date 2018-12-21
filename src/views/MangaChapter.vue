@@ -70,6 +70,7 @@ export default {
     }
   },
   created() {
+    // Find the manga
     const mangaId = window.location.pathname.split("/")[2];
     const chapterId = window.location.pathname.split("/")[4];
 
@@ -79,7 +80,11 @@ export default {
         this.manga = data;
         //TODO: I can't find any other way than looping over each chapter and find the number
         data.chapters.forEach(chapter => {
-          if (chapter["3"] === chapterId) this.chapter = chapter[0];
+          if (chapter["3"] === chapterId) {
+            this.chapter = chapter[0];
+            // Set the document title
+            document.title = `${data.title} - Chapter ${chapter[0]}`
+          }
         });
       });
 
@@ -87,6 +92,7 @@ export default {
     axios
       .get(`https://www.mangaeden.com/api/chapter/${chapterId}/`)
       .then(({ data: { images } }) => (this.pages = images.reverse()));
+    
   }
 };
 </script>

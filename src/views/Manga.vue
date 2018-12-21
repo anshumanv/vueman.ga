@@ -45,7 +45,10 @@ export default {
     this.mangaId = mangaId;
     axios
       .get(`https://www.mangaeden.com/api/manga/${mangaId}/`)
-      .then(({ data }) => (this.manga = data));
+      .then(({ data }) => {
+        this.manga = data;
+        document.title = data.title
+      })
   }
 };
 </script>
