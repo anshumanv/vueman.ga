@@ -15,7 +15,7 @@
 
 ## Demo
 
-🔥 http://vueman.ga 🔥
+🔥 https://vueman.ga 🔥
 
 ## Project setup
 ```
@@ -43,8 +43,10 @@ yarn run lint
 ```
 
 
-PS: My futile attempt of exploring Vue.js.
+PS: 
 
+* This is a result of my futile attempt of exploring Vue.js.
+* Potentially NSFW.
 
 #### Thanks
 
@@ -63,4 +65,4 @@ PS: My futile attempt of exploring Vue.js.
 
 ### Contribute
 
-Found a bug, please [create an issue](https://github.com/anshumanv/evolutions-webapp/issues/new)
+Found a bug, please [create an issue](https://github.com/anshumanv/vueman.ga/issues/new)
