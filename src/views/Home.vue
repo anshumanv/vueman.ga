@@ -1,30 +1,32 @@
 <template>
   <v-container>
-    <v-layout column align-center justify-center>
+    <div class="loader" v-if="!mangas.length">
+      <v-progress-circular
+        indeterminate
+        color="white"
+      ></v-progress-circular>
+    </div>
+    <v-layout column align-center justify-center v-else>
       <v-flex mb-4>
         <h1 class="display-2 font-weight-light ma-3">vueman.ga</h1>
       </v-flex>
       <v-flex xs4 sm3 md4>
-        <v-text-field
-          label="Search Manga"
-          placeholder="Search"
-          solo
-        ></v-text-field>
         <v-autocomplete
-        solo
-        v-model="model"
-        :items="allMangas"
-        :search-input.sync="search"
-        color="gray"
-        hide-no-data
-        hide-selected
-        item-text="t"
-        menu-props="openOnClick"
-        label="Public APIs"
-        placeholder="Start typing to Search"
-        prepend-icon="mdi-database-search"
-        return-object
-      ></v-autocomplete>
+          full-width
+          solo
+          v-model="model"
+          :items="allMangas"
+          :search-input.sync="search"
+          color="gray"
+          hide-no-data
+          hide-selected
+          item-text="t"
+          menu-props="openOnClick"
+          label="Public APIs"
+          placeholder="Start typing to Search"
+          prepend-icon="mdi-database-search"
+          return-object
+        ></v-autocomplete>
       </v-flex>
     </v-layout>
     <MangaCards :mangas="mangas" />
@@ -72,3 +74,14 @@ export default {
   }
 };
 </script>
+
+<style scoped>
+.loader {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  width: 100vw;
+}
+</style>
+

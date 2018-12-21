@@ -1,6 +1,12 @@
 <template>
   <v-container grid-list-md text-xs-center>
-    <v-layout column no-wrap>
+    <div class="loader" v-if="!pages.length">
+      <v-progress-circular
+        indeterminate
+        color="white"
+      ></v-progress-circular>
+    </div>
+    <v-layout column no-wrap v-else>
       <v-layout row wrap>
         <v-flex>
           {{ manga.title }} / Chapter {{ chapter }} / Page {{ page }}
@@ -88,5 +94,13 @@ export default {
 <style scoped>
 .chapter-bottom {
   display: flex;
+}
+
+.loader {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  width: 100vw;
 }
 </style>
