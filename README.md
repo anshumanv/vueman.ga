@@ -2,7 +2,7 @@
   <img src="./public/vueman256.png" align="center" width="150">
 </p>
 
-<h1 align="center"> vuemanga </h1>
+<h1 align="center"> vueman.ga </h1>
 <p align="center">
 <img src="https://img.shields.io/badge/MADE%20WITH-VUE-red.svg?style=for-the-badge" align="center">
 
