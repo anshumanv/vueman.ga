@@ -12,19 +12,15 @@
       </v-flex>
       <v-flex xs4 sm3 md4>
         <v-autocomplete
-          full-width
+          dense
           solo
           v-model="model"
           :items="allMangas"
           :search-input.sync="search"
           color="gray"
-          hide-no-data
-          hide-selected
           item-text="t"
           menu-props="openOnClick"
-          label="Public APIs"
           placeholder="Start typing to Search"
-          prepend-icon="mdi-database-search"
           return-object
         ></v-autocomplete>
       </v-flex>
@@ -64,7 +60,7 @@ export default {
       .get("https://www.mangaeden.com/api/list/0/")
       .then(({ data }) => {
         this.allMangas = data.manga;
-        this.mangas = data.manga.slice(0, 12)
+        this.mangas = data.manga.slice(450, 462)
       });
   },
   watch: {
