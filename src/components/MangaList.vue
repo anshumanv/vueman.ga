@@ -1,6 +1,6 @@
 <template>
   <v-layout row>
-    <v-flex ml-5>
+    <v-flex class="ml-4" md8 sm6 xs12 lg8>
       <v-card>
         <v-toolbar>
           <v-toolbar-title>Chapters</v-toolbar-title>

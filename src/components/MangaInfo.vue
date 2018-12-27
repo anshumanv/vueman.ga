@@ -1,5 +1,5 @@
 <template>
-    <v-layout column class="manga-info">
+    <v-layout column>
       <v-flex class="info-item">
         <div class="font-weight-bold body-2">Hits</div>
         <div class="caption">{{ manga.hits }}</div>
@@ -49,7 +49,4 @@ export default {
   justify-content: space-between;
 }
 
-.manga-info {
-  flex-basis: 15rem;
-}
 </style>

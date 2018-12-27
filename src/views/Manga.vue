@@ -1,22 +1,22 @@
 <template>
-  <div>
-    <div class="loader" v-if="!manga.title">
-      <v-progress-circular indeterminate color="white"></v-progress-circular>
-    </div>
-    <div v-else>
-      <MangaHeader :manga="manga" />
-      <v-container>
-        <v-layout row>
-          <v-flex xs3 class="manga-info"> <MangaInfo :manga="manga"></MangaInfo> </v-flex>
-          <MangaList
-            :chapters="manga.chapters"
-            :name="manga.title"
-            :mangaId="mangaId"
-          />
-        </v-layout>
-      </v-container>
-    </div>
-  </div>
+      <div class="loader" v-if="!manga.title">
+        <v-progress-circular indeterminate color="white"></v-progress-circular>
+      </div>
+      <div v-else>
+        <v-container grid-list-md>
+          <v-layout row wrap>
+            <MangaHeader :manga="manga"/>
+                <v-flex xs12 sm5 md3 lg3>
+                  <MangaInfo :manga="manga"></MangaInfo>
+                </v-flex>
+                <MangaList
+                  :chapters="manga.chapters"
+                  :name="manga.title"
+                  :mangaId="mangaId"
+                />
+          </v-layout>
+        </v-container>
+      </div>
 </template>
 
 <script>
@@ -59,10 +59,6 @@ export default {
   justify-content: center;
   align-items: center;
   height: 100vh;
-}
-
-.manga-info {
-  flex-basis: 15rem;
 }
 
 </style>
