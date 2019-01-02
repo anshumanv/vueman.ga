@@ -4,7 +4,7 @@
       <v-flex xs6>
         <v-img
           :src="`https://cdn.mangaeden.com/mangasimg/${manga.image}`"
-          class="grey lighten-2"
+          class="grey manga-img lighten-2"
         >
           <v-layout
             slot="placeholder"
@@ -54,5 +54,9 @@ export default {
 .genre-chips {
   display: flex;
   flex-wrap: wrap;
+}
+
+.manga-img {
+  width: 15rem;
 }
 </style>
