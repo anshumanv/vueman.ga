@@ -7,7 +7,7 @@
       <MangaHeader :manga="manga" />
       <v-container>
         <v-layout row>
-          <v-flex xs3> <MangaInfo :manga="manga"></MangaInfo> </v-flex>
+          <v-flex xs3 class="manga-info"> <MangaInfo :manga="manga"></MangaInfo> </v-flex>
           <MangaList
             :chapters="manga.chapters"
             :name="manga.title"
@@ -60,4 +60,9 @@ export default {
   align-items: center;
   height: 100vh;
 }
+
+.manga-info {
+  flex-basis: 15rem;
+}
+
 </style>

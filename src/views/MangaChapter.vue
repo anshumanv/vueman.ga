@@ -37,8 +37,8 @@
           {{ manga.title }}
         </v-flex>
         <v-flex>
-          <v-btn v-on:click="prevPage" color="#212121">PREV</v-btn>
-          <v-btn v-on:click="nextPage" color="#212121">NEXT</v-btn>
+          <v-btn class="nav-icons" v-on:click="prevPage" color="#212121"><v-icon>keyboard_arrow_left</v-icon></v-btn>
+          <v-btn class="nav-icons" v-on:click="nextPage" color="#212121"><v-icon>keyboard_arrow_right</v-icon></v-btn>
         </v-flex>
       </div>
       <div class="text-xs-center">
@@ -107,5 +107,10 @@ export default {
   justify-content: center;
   align-items: center;
   height: 100vh;
+}
+
+.nav-icons {
+  border-radius: 50%;
+  min-width: 36px;
 }
 </style>

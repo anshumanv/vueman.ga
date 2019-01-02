@@ -1,7 +1,7 @@
 <template>
   <v-container grid-list-md>
     <v-layout row align-end>
-      <v-flex xs6>
+      <v-flex xs12 sm8 md6 lg4 xl2>
         <v-img
           :src="`https://cdn.mangaeden.com/mangasimg/${manga.image}`"
           class="grey manga-img lighten-2"
@@ -20,7 +20,7 @@
           </v-layout>
         </v-img>
       </v-flex>
-      <v-flex class="ml-3">
+      <v-flex class="ml-5">
         <v-layout column>
           <v-flex>
             <div class="display-1">{{ manga.title }}</div>
