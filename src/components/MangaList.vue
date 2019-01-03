@@ -1,6 +1,6 @@
 <template>
   <v-layout row>
-    <v-flex class="ml-4" md8 sm6 xs12 lg8>
+    <v-flex :class="{'ma-0': $vuetify.breakpoint.xsOnly, 'ma-4': $vuetify.breakpoint.smAndUp}" md8 sm6 xs12 lg8>
       <v-card>
         <v-toolbar>
           <v-toolbar-title>Chapters</v-toolbar-title>

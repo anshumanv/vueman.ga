@@ -19,7 +19,7 @@
           </v-layout>
         </v-img>
       </v-flex>
-      <v-flex md8 sm6 xs12 lg8 class="ml-4">
+      <v-flex md8 sm6 xs12 lg8 :class="{'ma-0': $vuetify.breakpoint.xsOnly, 'ma-4': $vuetify.breakpoint.smAndUp}" >
         <v-layout column>
           <v-flex>
             <div class="display-1">{{ manga.title }}</div>
