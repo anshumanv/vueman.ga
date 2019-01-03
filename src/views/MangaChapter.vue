@@ -9,25 +9,29 @@
           {{ manga.title }} / Chapter {{ chapter }} / Page {{ page }}
         </v-flex>
       </v-layout>
-      <v-flex xs12>
-        <!-- Add a loader till the image is being fetched -->
-        <v-img
-          :src="`https://cdn.mangaeden.com/mangasimg/${pages[page - 1]['1']}`"
-        >
-          <v-layout
-            slot="placeholder"
-            fill-height
-            align-center
-            justify-center
-            ma-0
+      <v-layout row align-center>
+        <v-btn class="nav-icons" v-on:click="prevPage" color="#212121"><v-icon>arrow_back</v-icon></v-btn>        
+        <v-flex xs12 >
+          <!-- Add a loader till the image is being fetched -->
+          <v-img
+            :src="`https://cdn.mangaeden.com/mangasimg/${pages[page - 1]['1']}`"
           >
-            <v-progress-circular
-              indeterminate
-              color="grey lighten-5"
-            ></v-progress-circular>
-          </v-layout>
-        </v-img>
-      </v-flex>
+            <v-layout
+              slot="placeholder"
+              fill-height
+              align-center
+              justify-center
+              ma-0
+            >
+              <v-progress-circular
+                indeterminate
+                color="grey lighten-5"
+              ></v-progress-circular>
+            </v-layout>
+          </v-img>
+        </v-flex>
+        <v-btn class="nav-icons" v-on:click="nextPage" color="#212121"><v-icon>arrow_forward</v-icon></v-btn>
+      </v-layout>
       <div class="chapter-bottom">
         <!-- <v-layout>
 
@@ -35,10 +39,6 @@
         <v-flex align-self-center>
           <!-- <v-img width="50px" :src="`https://cdn.mangaeden.com/mangasimg/${manga.image}`"></v-img>  -->
           {{ manga.title }}
-        </v-flex>
-        <v-flex>
-          <v-btn class="nav-icons" v-on:click="prevPage" color="#212121"><v-icon>keyboard_arrow_left</v-icon></v-btn>
-          <v-btn class="nav-icons" v-on:click="nextPage" color="#212121"><v-icon>keyboard_arrow_right</v-icon></v-btn>
         </v-flex>
       </div>
       <div class="text-xs-center">
@@ -111,6 +111,8 @@ export default {
 
 .nav-icons {
   border-radius: 50%;
-  min-width: 36px;
+  width: 5rem;
+  height: 5rem;
+  background-color: rgba(33, 33, 33, 0.3)
 }
 </style>
