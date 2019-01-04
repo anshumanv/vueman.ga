@@ -10,7 +10,7 @@
         </v-flex>
       </v-layout>
       <v-layout row align-center>
-        <v-btn class="nav-icons hidden-md-and-down" v-on:click="prevPage" color="#212121"><v-icon>arrow_back</v-icon></v-btn>        
+        <v-btn fab class="hidden-sm-and-down" v-on:click="prevPage" color="#212121"><v-icon>arrow_back</v-icon></v-btn>        
         <v-flex xs12 >
           <!-- Add a loader till the image is being fetched -->
           <v-img
@@ -30,7 +30,7 @@
             </v-layout>
           </v-img>
         </v-flex>
-        <v-btn class="nav-icons hidden-md-and-down" v-on:click="nextPage" color="#212121"><v-icon>arrow_forward</v-icon></v-btn>
+        <v-btn fab class="hidden-sm-and-down" v-on:click="nextPage" color="#212121"><v-icon>arrow_forward</v-icon></v-btn>
       </v-layout>
       <div class="chapter-bottom">
         <!-- <v-layout>
