@@ -5,12 +5,12 @@
     </div>
     <v-layout column no-wrap v-else>
       <v-layout row wrap>
-        <v-flex class="headline font-weight-medium">
+        <v-flex :class="{'title font-weight-medium': $vuetify.breakpoint.xsOnly, 'headline font-weight-medium': $vuetify.breakpoint.smAndUp}">
           {{ manga.title }} / Chapter {{ chapter }} / Page {{ page }}
         </v-flex>
       </v-layout>
       <v-layout row align-center>
-        <v-btn class="nav-icons" v-on:click="prevPage" color="#212121"><v-icon>arrow_back</v-icon></v-btn>        
+        <v-btn class="nav-icons hidden-md-and-down" v-on:click="prevPage" color="#212121"><v-icon>arrow_back</v-icon></v-btn>        
         <v-flex xs12 >
           <!-- Add a loader till the image is being fetched -->
           <v-img
@@ -30,7 +30,7 @@
             </v-layout>
           </v-img>
         </v-flex>
-        <v-btn class="nav-icons" v-on:click="nextPage" color="#212121"><v-icon>arrow_forward</v-icon></v-btn>
+        <v-btn class="nav-icons hidden-md-and-down" v-on:click="nextPage" color="#212121"><v-icon>arrow_forward</v-icon></v-btn>
       </v-layout>
       <div class="chapter-bottom">
         <!-- <v-layout>
