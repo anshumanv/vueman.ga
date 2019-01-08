@@ -7,7 +7,7 @@
           ref="form"
           v-model="valid"
           lazy-validation
-          v-on:submit.prevent="submit"
+          v-on:submit.prevent="submitForm"
         >
           <v-text-field
             v-model="name"
@@ -45,7 +45,7 @@
           <v-btn
             :disabled="!valid"
             color="success"
-            @click="submit"
+            @click="submitForm"
           >
             Submit
           </v-btn>
@@ -58,6 +58,8 @@
 
 
 <script>
+import { mapState, mapActions, mapGetters } from 'vuex'
+
   export default {
     name: "SignUp",
     data: () => ({
@@ -83,13 +85,28 @@
         v => /.+@.+/.test(v) || 'E-mail must be valid'
       ],
     }),
-
+    computed: {
+      ...mapState({
+        loggedIn: state => state.auth.loggedIn
+      }),
+      ...mapGetters('auth', {
+        loggedIn: 'loggedIn',
+        user: 'currentUser'
+      })
+    },
     methods: {
-      submit () {
+      submitForm () {
         console.log(this)
         if (this.$refs.form.validate()) {
           const { email, username, password, name } = this;
           console.log(email, password);
+          const payload = {
+            email,
+            username,
+            password,
+            name
+          }
+          this.$store.dispatch('auth/signup', payload)
           this.snackbar = true
         }
       },
