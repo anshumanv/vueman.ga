@@ -1,4 +1,5 @@
-import { register } from '../../api/authAPI';
+import { register, loginPromise } from '../../api/authAPI';
+import setAuthHeader from '../../utils/setAuthToken'
 
 const state = {
   user: {},
@@ -24,6 +25,26 @@ const actions = {
         console.log(res.data.user)
         commit('userSignedUp', res.data.user)
       })
+      .catch(err => console.log(err))
+  },
+  login ({ commit, state }, payload) {
+    loginPromise(payload)
+      .then(res => {
+        const { token } = res.data
+        console.log(token)
+        localStorage.setItem('jwtToken', token)
+
+        setAuthHeader(token)
+        
+        const decoded = jwt_decode(token)
+        commit('userLogin', decoded)
+      })
+      .catch(err => console.log(err))
+  },
+  logout({ commit, state }) {
+    localStorage.removeItem('jwtToken')
+    setAuthHeader(false)
+    commit('userLogout')
   }
 }
 
@@ -33,6 +54,15 @@ const actions = {
 const mutations = {
   userSignedUp (state, user) {
     state.user = user
+    state.loggedIn = true
+  },
+  userLogin (state, user) {
+    state.user = user
+    state.loggedIn = true
+  },
+  userLogout (state) {
+    state.user = {}
+    state.loggedIn = false
   }
 }
 

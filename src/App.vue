@@ -8,6 +8,7 @@
       <v-btn fab v-on:click="toHome" flat>
         <span><v-icon>home</v-icon></span>
       </v-btn>
+      <LoginDialog />
     </v-toolbar>
 
     <v-content> <router-view /> </v-content>
@@ -19,12 +20,17 @@
 </template>
 
 <script>
+import LoginDialog from "./components/LoginDialog"
+
 export default {
   name: "App",
   data() {
     return {
-      //
-    };
+
+};
+  },
+  components: {
+    LoginDialog
   },
   methods: {
     toHome: function() {
