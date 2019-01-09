@@ -1,5 +1,6 @@
 import { register, loginPromise } from '../../api/authAPI';
 import setAuthHeader from '../../utils/setAuthToken'
+import jwt_decode from 'jwt-decode';
 
 const state = {
   user: {},
@@ -45,6 +46,11 @@ const actions = {
     localStorage.removeItem('jwtToken')
     setAuthHeader(false)
     commit('userLogout')
+  },
+  saveUser( {commit, state }, token) {
+    setAuthHeader(token);
+    const decoded = jwt_decode(token);
+    commit('userLogin', decoded)
   }
 }
 

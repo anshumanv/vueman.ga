@@ -8,7 +8,7 @@
       <v-btn fab v-on:click="toHome" flat>
         <span><v-icon>home</v-icon></span>
       </v-btn>
-      <LoginDialog />
+      <LoginDialog v-if="!loggedIn" />
     </v-toolbar>
 
     <v-content> <router-view /> </v-content>
@@ -20,6 +20,8 @@
 </template>
 
 <script>
+import jwt_decode from 'jwt-decode';
+import { mapState, mapGetters } from 'vuex'
 import LoginDialog from "./components/LoginDialog"
 
 export default {
@@ -27,7 +29,17 @@ export default {
   data() {
     return {
 
-};
+    };
+  },
+  computed: {
+    ...mapState({
+      loggedIn: state => state.auth.loggedIn,
+      user: state => state.auth.user
+    }),
+    ...mapGetters('auth', {
+      loggedIn: 'loggedIn',
+      user: 'user'
+    })
   },
   components: {
     LoginDialog
@@ -35,6 +47,11 @@ export default {
   methods: {
     toHome: function() {
       this.$router.replace("/");
+    }
+  },
+  created() {
+    if(localStorage.getItem('jwtToken')) {
+      this.$store.dispatch('auth/saveUser', localStorage.getItem('jwtToken'))
     }
   }
 };

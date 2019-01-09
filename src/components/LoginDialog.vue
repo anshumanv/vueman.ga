@@ -8,7 +8,7 @@
       width="50%"
       v-model="showLoginDialog"
     >
-      <v-card>
+      <v-card >
         <v-card-title class="headline">Login</v-card-title>
 
         <v-form
@@ -50,12 +50,53 @@
 </template>
 
 <script>
+import { mapState, mapActions, mapGetters } from 'vuex'
+
+
 export default {
   name: "LoginDialog",
   data() {
     return {
-      showLoginDialog: false
+      showLoginDialog: false,
+      valid: false,
+      email: '',
+      password: '',
+      passwordRules: [
+        v => !!v || 'Password is required',
+        v => (v && v.length <= 10) || 'Password must be greater than 5 characters'
+      ],
+      emailRules: [
+        v => !!v || 'E-mail is required',
+        v => /.+@.+/.test(v) || 'E-mail must be valid'
+      ],
     }
-  }
+  },
+  computed: {
+      ...mapState({
+        loggedIn: state => state.auth.loggedIn
+      }),
+      ...mapGetters('auth', {
+        loggedIn: 'loggedIn',
+        user: 'currentUser'
+      })
+    },
+    methods: {
+      submitForm () {
+        console.log(this)
+        if (this.$refs.form.validate()) {
+          const { email, password } = this;
+          console.log(email, password);
+          const payload = {
+            email,
+            password
+          }
+          this.$store.dispatch('auth/login', payload)
+          this.snackbar = true
+        }
+      },
+      reset () {
+        this.$refs.form.reset()
+      },
+    }
 }
 </script>
