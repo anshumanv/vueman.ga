@@ -46,7 +46,6 @@ const actions = {
     commit('userLogout')
   },
   saveUser( {commit, state }, token) {
-    setAuthHeader(token);
     const decoded = jwt_decode(token);
     commit('userLogin', decoded)
   }
