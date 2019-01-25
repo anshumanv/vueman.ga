@@ -36,6 +36,7 @@
           ></v-text-field>
 
           <v-btn
+            type="submit"
             :disabled="!valid"
             color="success"
             @click="submitForm"

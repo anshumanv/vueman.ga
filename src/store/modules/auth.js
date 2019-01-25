@@ -34,8 +34,6 @@ const actions = {
         const { token } = res.data
         console.log(token)
         localStorage.setItem('jwtToken', token)
-
-        setAuthHeader(token)
         
         const decoded = jwt_decode(token)
         commit('userLogin', decoded)
