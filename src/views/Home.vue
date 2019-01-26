@@ -18,7 +18,6 @@
             :search-input.sync="search"
             color="gray"
             item-text="t"
-            menu-props="openOnClick"
             placeholder="Search Manga  🔍"
             return-object
           ></v-autocomplete>
