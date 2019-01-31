@@ -5,13 +5,24 @@
     </div>
     <v-layout column no-wrap v-else>
       <v-layout row wrap>
-        <v-flex :class="{'title font-weight-medium': $vuetify.breakpoint.xsOnly, 'headline font-weight-medium': $vuetify.breakpoint.smAndUp}">
+        <v-flex
+          :class="{
+            'title font-weight-medium': $vuetify.breakpoint.xsOnly,
+            'headline font-weight-medium': $vuetify.breakpoint.smAndUp
+          }"
+        >
           {{ manga.title }} / Chapter {{ chapter }} / Page {{ page }}
         </v-flex>
       </v-layout>
       <v-layout row align-center>
-        <v-btn fab class="hidden-sm-and-down" v-on:click="prevPage" color="#212121"><v-icon>arrow_back</v-icon></v-btn>        
-        <v-flex xs12 >
+        <v-btn
+          fab
+          class="hidden-sm-and-down"
+          v-on:click="prevPage"
+          color="#212121"
+          ><v-icon>arrow_back</v-icon></v-btn
+        >
+        <v-flex xs12>
           <!-- Add a loader till the image is being fetched -->
           <v-img
             :src="`https://cdn.mangaeden.com/mangasimg/${pages[page - 1]['1']}`"
@@ -30,7 +41,13 @@
             </v-layout>
           </v-img>
         </v-flex>
-        <v-btn fab class="hidden-sm-and-down" v-on:click="nextPage" color="#212121"><v-icon>arrow_forward</v-icon></v-btn>
+        <v-btn
+          fab
+          class="hidden-sm-and-down"
+          v-on:click="nextPage"
+          color="#212121"
+          ><v-icon>arrow_forward</v-icon></v-btn
+        >
       </v-layout>
       <div class="chapter-bottom">
         <!-- <v-layout>
@@ -83,7 +100,7 @@ export default {
           if (chapter["3"] === chapterId) {
             this.chapter = chapter[0];
             // Set the document title
-            document.title = `${data.title} - Chapter ${chapter[0]}`
+            document.title = `${data.title} - Chapter ${chapter[0]}`;
           }
         });
       });
@@ -92,7 +109,6 @@ export default {
     axios
       .get(`https://www.mangaeden.com/api/chapter/${chapterId}/`)
       .then(({ data: { images } }) => (this.pages = images.reverse()));
-    
   }
 };
 </script>
@@ -113,6 +129,6 @@ export default {
   border-radius: 50%;
   width: 5rem;
   height: 5rem;
-  background-color: rgba(33, 33, 33, 0.3)
+  background-color: rgba(33, 33, 33, 0.3);
 }
 </style>

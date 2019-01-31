@@ -1,7 +1,16 @@
 <template>
   <v-container grid-list-md text-xs-center>
     <v-layout row wrap>
-      <v-flex v-for="manga in mangas" :key="manga.i" xl2 md3 sm4 xs12 grow align-self-end>
+      <v-flex
+        v-for="manga in mangas"
+        :key="manga.i"
+        xl2
+        md3
+        sm4
+        xs12
+        grow
+        align-self-end
+      >
         <MangaCard :manga="manga" />
       </v-flex>
     </v-layout>

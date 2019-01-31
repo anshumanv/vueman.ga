@@ -42,77 +42,71 @@
             required
           ></v-text-field>
 
-          <v-btn
-            :disabled="!valid"
-            color="success"
-            @click="submitForm"
-          >
+          <v-btn :disabled="!valid" color="success" @click="submitForm">
             Submit
           </v-btn>
-
         </v-form>
       </v-card>
     </v-flex>
   </v-layout>
 </template>
 
-
 <script>
-import { mapState, mapActions, mapGetters } from 'vuex'
+import { mapState, mapActions, mapGetters } from "vuex";
 
-  export default {
-    name: "SignUp",
-    data: () => ({
-      valid: true,
-      name: '',
-      email: '',
-      password: '',
-      username: '',
-      nameRules: [
-        v => !!v || 'Name is required',
-        v => (v && v.length <= 10) || 'Name must be less than 10 characters'
-      ],
-      usernameRules: [
-        v => !!v || 'Username is required',
-        v => (v && v.length <= 3) || 'Username must be greater than 3 characters'
-      ],
-      passwordRules: [
-        v => !!v || 'Password is required',
-        v => (v && v.length <= 10) || 'Password must be greater than 5 characters'
-      ],
-      emailRules: [
-        v => !!v || 'E-mail is required',
-        v => /.+@.+/.test(v) || 'E-mail must be valid'
-      ],
+export default {
+  name: "SignUp",
+  data: () => ({
+    valid: true,
+    name: "",
+    email: "",
+    password: "",
+    username: "",
+    nameRules: [
+      v => !!v || "Name is required",
+      v => (v && v.length <= 10) || "Name must be less than 10 characters"
+    ],
+    usernameRules: [
+      v => !!v || "Username is required",
+      v => (v && v.length <= 3) || "Username must be greater than 3 characters"
+    ],
+    passwordRules: [
+      v => !!v || "Password is required",
+      v => (v && v.length <= 10) || "Password must be greater than 5 characters"
+    ],
+    emailRules: [
+      v => !!v || "E-mail is required",
+      v => /.+@.+/.test(v) || "E-mail must be valid"
+    ]
+  }),
+  computed: {
+    ...mapState({
+      loggedIn: state => state.auth.loggedIn
     }),
-    computed: {
-      ...mapState({
-        loggedIn: state => state.auth.loggedIn
-      }),
-      ...mapGetters('auth', {
-        loggedIn: 'loggedIn',
-        user: 'currentUser'
-      })
+    ...mapGetters("auth", {
+      loggedIn: "loggedIn",
+      user: "currentUser"
+    })
+  },
+  methods: {
+    submitForm() {
+      console.log(this);
+      if (this.$refs.form.validate()) {
+        const { email, username, password, name } = this;
+        console.log(email, password);
+        const payload = {
+          email,
+          username,
+          password,
+          name
+        };
+        this.$store.dispatch("auth/signup", payload);
+        this.snackbar = true;
+      }
     },
-    methods: {
-      submitForm () {
-        console.log(this)
-        if (this.$refs.form.validate()) {
-          const { email, username, password, name } = this;
-          console.log(email, password);
-          const payload = {
-            email,
-            username,
-            password,
-            name
-          }
-          this.$store.dispatch('auth/signup', payload)
-          this.snackbar = true
-        }
-      },
-      reset () {
-        this.$refs.form.reset()
-      },
+    reset() {
+      this.$refs.form.reset();
     }
   }
+};
 </script>

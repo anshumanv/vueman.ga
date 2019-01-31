@@ -1,22 +1,22 @@
 <template>
-      <div class="loader" v-if="!manga.title">
-        <v-progress-circular indeterminate color="white"></v-progress-circular>
-      </div>
-      <div v-else>
-        <v-container grid-list-md>
-          <v-layout row wrap>
-            <MangaHeader :manga="manga"/>
-                <v-flex xs12 sm5 md3 lg3>
-                  <MangaInfo :manga="manga"></MangaInfo>
-                </v-flex>
-                <MangaList
-                  :chapters="manga.chapters"
-                  :name="manga.title"
-                  :mangaId="mangaId"
-                />
-          </v-layout>
-        </v-container>
-      </div>
+  <div class="loader" v-if="!manga.title">
+    <v-progress-circular indeterminate color="white"></v-progress-circular>
+  </div>
+  <div v-else>
+    <v-container grid-list-md>
+      <v-layout row wrap>
+        <MangaHeader :manga="manga" />
+        <v-flex xs12 sm5 md3 lg3>
+          <MangaInfo :manga="manga"></MangaInfo>
+        </v-flex>
+        <MangaList
+          :chapters="manga.chapters"
+          :name="manga.title"
+          :mangaId="mangaId"
+        />
+      </v-layout>
+    </v-container>
+  </div>
 </template>
 
 <script>
@@ -47,8 +47,8 @@ export default {
       .get(`https://www.mangaeden.com/api/manga/${mangaId}/`)
       .then(({ data }) => {
         this.manga = data;
-        document.title = data.title
-      })
+        document.title = data.title;
+      });
   }
 };
 </script>
@@ -60,5 +60,4 @@ export default {
   align-items: center;
   height: 100vh;
 }
-
 </style>

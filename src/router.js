@@ -4,6 +4,7 @@ import Home from "./views/Home.vue";
 import Manga from "./views/Manga.vue";
 import MangaChapter from "./views/MangaChapter.vue";
 import SignUpPage from "./views/SignUpPage.vue";
+import ProfilePage from "./views/ProfilePage.vue";
 
 Vue.use(Router);
 
@@ -30,6 +31,11 @@ export default new Router({
       path: "/signup",
       name: "signup",
       component: SignUpPage
+    },
+    {
+      path: "/profile",
+      name: "profile",
+      component: ProfilePage
     },
     {
       path: "/about",
