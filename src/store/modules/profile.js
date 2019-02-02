@@ -6,9 +6,9 @@ const state = {
 
 // Adding getter
 const getters = {
-  profile: (state, getters, rootState) => {
-    console.log(rootState);
-    return state.profile;
+  userManga: (state, getters, rootState) => {
+    console.log(state.userProfile.mangas);
+    return state.userProfile.mangas;
   }
 };
 
@@ -18,7 +18,6 @@ const actions = {
     console.log(username, token);
     profilePromise(username, token)
       .then(res => {
-        console.log(res.data.user);
         commit("profileFetched", res.data.user);
       })
       .catch(err => console.log(err));
