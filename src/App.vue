@@ -13,28 +13,18 @@
         <span><v-icon>home</v-icon></span>
       </v-btn>
       <LoginDialog v-if="!loggedIn" />
-      <v-menu
-      transition="slide-y-transition"
-      bottom
-    >
-      <v-btn
-        slot="activator"
-        class="purple"
-        color="primary"
-        dark
-      >
-        ✨
-      </v-btn>
-      <v-list>
-        <v-list-tile
-          v-for="(item, i) in dropdown_options"
-          :key="i"
-          @click="toolbarDropdown(item.path)"
-        >
-          <v-list-tile-title>{{ item.text }}</v-list-tile-title>
-        </v-list-tile>
-      </v-list>
-    </v-menu>
+      <v-menu transition="slide-y-transition" bottom>
+        <v-btn slot="activator" class="purple" color="primary" dark> ✨ </v-btn>
+        <v-list>
+          <v-list-tile
+            v-for="(item, i) in dropdown_options"
+            :key="i"
+            @click="toolbarDropdown(item.path)"
+          >
+            <v-list-tile-title>{{ item.text }}</v-list-tile-title>
+          </v-list-tile>
+        </v-list>
+      </v-menu>
     </v-toolbar>
 
     <!-- Router -->

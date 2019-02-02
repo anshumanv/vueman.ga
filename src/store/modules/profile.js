@@ -7,7 +7,7 @@ const state = {
 // Adding getter
 const getters = {
   profile: (state, getters, rootState) => {
-    console.log(rootState)
+    console.log(rootState);
     return state.profile;
   }
 };
@@ -15,7 +15,7 @@ const getters = {
 // Actions
 const actions = {
   fetchProfile({ commit, state }, { username, token }) {
-    console.log(username, token)
+    console.log(username, token);
     profilePromise(username, token)
       .then(res => {
         console.log(res.data.user);
