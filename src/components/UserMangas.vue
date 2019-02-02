@@ -3,7 +3,7 @@
     <v-tabs centered v-model="active" grow show-arrows dark icons-and-text>
       <v-tabs-slider color="blue"></v-tabs-slider>
       <v-tab v-for="tab in tabsData" :key="tab.type" :href="`#${tab.type}`">
-        {{ tab.text }}
+        {{ tab.text }} ({{ mangaCount(tab.type).length }})
         <v-icon>{{ tab.icon }}</v-icon>
       </v-tab>
       <v-tab-item v-for="tab in tabsData" :value="tab.type" :key="tab.type">
@@ -37,7 +37,7 @@ export default {
   name: "UserManga",
   data() {
     return {
-      active: null,
+      active: 'ALL',
       // I hope I can make use of the below thing sometime
       tabsData: [
         { text: "ALL", type: "ALL", href: "#all", icon: "list" },
@@ -67,6 +67,10 @@ export default {
       if(!this.userProfile.mangas) return [];
       if(!this.active || this.active === 'ALL') return this.userProfile.mangas;
       return this.userProfile.mangas.filter(manga => manga.status == this.active);
+    },
+    mangaCount: function(type) {
+      if(type === 'ALL') return this.userProfile.mangas;
+      return this.userProfile.mangas.filter(manga => manga.status == type);
     }
   },
   computed: {
