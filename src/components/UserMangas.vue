@@ -1,6 +1,6 @@
 <template>
-  <v-flex xs12>
-    <v-tabs centered v-model="active" grow dark icons-and-text>
+  <v-flex xs12 class="mt-5">
+    <v-tabs centered v-model="active" grow show-arrows dark icons-and-text>
       <v-tabs-slider color="blue"></v-tabs-slider>
       <v-tab v-for="tab in tabsData" :key="tab.type" :href="`#${tab.type}`">
         {{ tab.text }}
