@@ -10,19 +10,14 @@ const getters = {
   myFavorites: (state, getters, rootState) => {
     return rootState.auth.user.favorites;
   }
-  
 };
 
 // Actions
-const actions = {
-  
-};
+const actions = {};
 
 // mutations
 
-const mutations = {
-  
-};
+const mutations = {};
 
 export default {
   namespaced: true,

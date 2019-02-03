@@ -46,15 +46,15 @@
         </v-layout>
         <v-layout row v-if="loggedIn">
           <v-select
-          :items="mangaTypes"
-          :label="this.checkType"
-          dense
-          item-text="text"
-          return-object
-          solo
-          v-on:change="this.handleTypeChange"
-        ></v-select>
-        <v-icon>{{ favoriteIcon() }}</v-icon>
+            :items="mangaTypes"
+            :label="this.checkType"
+            dense
+            item-text="text"
+            return-object
+            solo
+            v-on:change="this.handleTypeChange"
+          ></v-select>
+          <v-icon>{{ favoriteIcon() }}</v-icon>
         </v-layout>
         <div class="mt-2">{{ manga.description }}</div>
       </v-layout>
@@ -63,7 +63,7 @@
 </template>
 
 <script>
-import { mapState, mapGetters } from 'vuex';
+import { mapState, mapGetters } from "vuex";
 
 export default {
   name: "MangaHeader",
@@ -85,14 +85,13 @@ export default {
         },
         { text: "PLAN TO READ", type: "PLANNED", icon: "book" }
       ],
-      mangaTypeLabel: 'ADD TO LIST'
-    }
+      mangaTypeLabel: "ADD TO LIST"
+    };
   },
   methods: {
     handleTypeChange: function(option) {
-      console.log(option.type)
-    },
-    
+      console.log(option.type);
+    }
   },
   computed: {
     ...mapState({
@@ -103,13 +102,13 @@ export default {
       myMangas: "myMangas"
     }),
     checkType: function() {
-      let res = 'ADD TO LIST';
-      if(this.myMangas) {
+      let res = "ADD TO LIST";
+      if (this.myMangas) {
         this.myMangas.forEach(manga => {
           if (manga.mangaId === this.mangaId) {
-            res = manga.status
+            res = manga.status;
           }
-        })
+        });
       }
       return res;
     }
