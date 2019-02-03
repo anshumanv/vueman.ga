@@ -7,16 +7,15 @@ const state = {
 // Adding getter
 const getters = {
   userManga: (state, getters, rootState) => {
-    console.log(state.userProfile.mangas);
     return state.userProfile.mangas;
   }
 };
 
 // Actions
 const actions = {
-  fetchProfile({ commit, state }, { username, token }) {
-    console.log(username, token);
-    profilePromise(username, token)
+  fetchProfile({ commit, state }, { username }) {
+    console.log(username);
+    profilePromise(username)
       .then(res => {
         commit("profileFetched", res.data.user);
       })

@@ -1,4 +1,5 @@
 import { register, loginPromise } from "../../api/authAPI";
+import { profilePromise } from "../../api/profileAPI";
 import setAuthHeader from "../../utils/setAuthToken";
 import jwt_decode from "jwt-decode";
 
@@ -35,7 +36,11 @@ const actions = {
         localStorage.setItem("jwtToken", token);
         setAuthHeader(token);
         const decoded = jwt_decode(token);
-        commit("userLogin", decoded);
+        profilePromise(decoded.username)
+          .then(res => {
+            commit('userLogin', res.data.user);
+          })
+        // commit("userLogin", decoded);
       })
       .catch(err => console.log(err));
   },
@@ -46,6 +51,10 @@ const actions = {
   },
   saveUser({ commit, state }, token) {
     const decoded = jwt_decode(token);
+    profilePromise(decoded.username)
+      .then(res => {
+        commit('userLogin', res.data.user);
+      })
     commit("userLogin", decoded);
   }
 };

@@ -44,6 +44,18 @@
             }}</v-chip>
           </div>
         </v-layout>
+        <v-layout row v-if="loggedIn">
+          <v-select
+          :items="mangaTypes"
+          :label="this.checkType"
+          dense
+          item-text="text"
+          return-object
+          solo
+          v-on:change="this.handleTypeChange"
+        ></v-select>
+        <v-icon>{{ favoriteIcon() }}</v-icon>
+        </v-layout>
         <div class="mt-2">{{ manga.description }}</div>
       </v-layout>
     </v-flex>
@@ -51,9 +63,57 @@
 </template>
 
 <script>
+import { mapState, mapGetters } from 'vuex';
+
 export default {
   name: "MangaHeader",
-  props: ["manga"]
+  props: ["manga", "mangaId"],
+  data() {
+    return {
+      mangaTypes: [
+        { text: "READING", type: "READING", icon: "loop" },
+        {
+          text: "COMPLETED",
+          type: "COMPLETED",
+          icon: "done_all"
+        },
+        { text: "ON-HOLD", type: "ONHOLD", icon: "pause" },
+        {
+          text: "DROPPED",
+          type: "DROPPED",
+          icon: "delete_forever"
+        },
+        { text: "PLAN TO READ", type: "PLANNED", icon: "book" }
+      ],
+      mangaTypeLabel: 'ADD TO LIST'
+    }
+  },
+  methods: {
+    handleTypeChange: function(option) {
+      console.log(option.type)
+    },
+    
+  },
+  computed: {
+    ...mapState({
+      user: state => state.auth.user,
+      loggedIn: state => state.auth.loggedIn
+    }),
+    ...mapGetters("mangas", {
+      myMangas: "myMangas"
+    }),
+    checkType: function() {
+      let res = 'ADD TO LIST';
+      if(this.myMangas) {
+        this.myMangas.forEach(manga => {
+          if (manga.mangaId === this.mangaId) {
+            res = manga.status
+          }
+        })
+      }
+      return res;
+    }
+  }
 };
 </script>
 

@@ -5,7 +5,7 @@
   <div v-else>
     <v-container grid-list-md>
       <v-layout row wrap>
-        <MangaHeader :manga="manga" />
+        <MangaHeader :manga="manga" :mangaId="mangaId" />
         <v-flex xs12 sm5 md3 lg3>
           <MangaInfo :manga="manga"></MangaInfo>
         </v-flex>
