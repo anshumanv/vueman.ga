@@ -54,7 +54,7 @@
             solo
             v-on:change="this.handleTypeChange"
           ></v-select>
-          <v-icon>{{ favoriteIcon() }}</v-icon>
+          <v-icon>{{ this.favoriteStatus }}</v-icon>
         </v-layout>
         <div class="mt-2">{{ manga.description }}</div>
       </v-layout>
@@ -90,7 +90,13 @@ export default {
   },
   methods: {
     handleTypeChange: function(option) {
-      console.log(option.type);
+      const token = localStorage.getItem("jwtToken");
+      const payload = {
+        mangaId: this.mangaId,
+        newStatus: option.type,
+        token
+      };
+      this.$store.dispatch("mangas/updateStatus", payload);
     }
   },
   computed: {
@@ -99,7 +105,8 @@ export default {
       loggedIn: state => state.auth.loggedIn
     }),
     ...mapGetters("mangas", {
-      myMangas: "myMangas"
+      myMangas: "myMangas",
+      myFavorites: "myFavorites"
     }),
     checkType: function() {
       let res = "ADD TO LIST";
@@ -111,6 +118,10 @@ export default {
         });
       }
       return res;
+    },
+    favoriteStatus: function() {
+      if (!this.myFavorites.includes(this.mangaId)) return "favorite_border";
+      return "favorite";
     }
   }
 };

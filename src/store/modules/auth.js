@@ -34,7 +34,7 @@ const actions = {
         const { token } = res.data;
         console.log(token);
         localStorage.setItem("jwtToken", token);
-        setAuthHeader(token);
+        // setAuthHeader(token);
         const decoded = jwt_decode(token);
         profilePromise(decoded.username).then(res => {
           commit("userLogin", res.data.user);

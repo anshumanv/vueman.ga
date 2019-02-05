@@ -5,7 +5,7 @@
         <div class="user-data" v-if="userProfile.username">
           <div class="headline">{{ userProfile.username }}</div>
           <span>Mangas added - {{ userProfile.mangas.length }}</span>
-          <span>Favourites - {{ userProfile.favourites.length }}</span>
+          <span>Favourites - {{ userProfile.favorites.length }}</span>
           <span>{{ userProfile.name }}</span>
           <span>{{ userProfile.email }}</span>
         </div>
