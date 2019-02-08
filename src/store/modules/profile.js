@@ -14,7 +14,6 @@ const getters = {
 // Actions
 const actions = {
   fetchProfile({ commit, state }, { username }) {
-    console.log(username);
     profilePromise(username)
       .then(res => {
         commit("profileFetched", res.data.user);
