@@ -1,5 +1,6 @@
 import Vue from "vue";
 import Router from "vue-router";
+import store from './store';
 import Home from "./views/Home.vue";
 import Manga from "./views/Manga.vue";
 import MangaChapter from "./views/MangaChapter.vue";
@@ -8,7 +9,7 @@ import ProfilePage from "./views/ProfilePage.vue";
 
 Vue.use(Router);
 
-export default new Router({
+const router = new Router({
   mode: "history",
   base: process.env.BASE_URL,
   routes: [
@@ -35,7 +36,10 @@ export default new Router({
     {
       path: "/profile",
       name: "profile",
-      component: ProfilePage
+      component: ProfilePage,
+      meta: {
+        requiresAuth: true
+      }
     },
     {
       path: "/about",
@@ -48,3 +52,17 @@ export default new Router({
     }
   ]
 });
+
+router.beforeEach((to, from, next) => {
+  if(to.matched.some(record => record.meta.requiresAuth)) {
+    if (store.getters['auth/loggedIn']) {
+      next()
+      return
+    }
+    next('/') 
+  } else {
+    next() 
+  }
+})
+
+export default router;
