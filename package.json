@@ -6,7 +6,7 @@
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint",
-    "precommit": "yarn lint --no-verify"
+    "precommit": "yarn lint"
   },
   "dependencies": {
     "axios": "^0.18.0",

@@ -1,6 +1,6 @@
 import Vue from "vue";
 import Router from "vue-router";
-import store from './store';
+import store from "./store";
 import Home from "./views/Home.vue";
 import Manga from "./views/Manga.vue";
 import MangaChapter from "./views/MangaChapter.vue";
@@ -54,15 +54,15 @@ const router = new Router({
 });
 
 router.beforeEach((to, from, next) => {
-  if(to.matched.some(record => record.meta.requiresAuth)) {
-    if (store.getters['auth/loggedIn']) {
-      next()
-      return
+  if (to.matched.some(record => record.meta.requiresAuth)) {
+    if (store.getters["auth/loggedIn"]) {
+      next();
+      return;
     }
-    next('/') 
+    next("/");
   } else {
-    next() 
+    next();
   }
-})
+});
 
 export default router;

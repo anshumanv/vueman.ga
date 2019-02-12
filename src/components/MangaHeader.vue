@@ -39,9 +39,9 @@
             :key="genre"
             class="text-xs-center"
           >
-            <v-chip color="#212121" class="body-2 white--text">{{
-              genre
-            }}</v-chip>
+            <v-chip color="#212121" class="body-2 white--text">
+              {{ genre }}
+            </v-chip>
           </div>
         </v-layout>
         <v-layout row v-if="loggedIn">
@@ -91,12 +91,25 @@ export default {
   methods: {
     handleTypeChange: function(option) {
       const token = localStorage.getItem("jwtToken");
-      const payload = {
-        mangaId: this.mangaId,
-        newStatus: option.type,
-        token
-      };
-      this.$store.dispatch("mangas/updateStatus", payload);
+      console.log(this.user, this.mangaId);
+      const allMangaIds = [];
+      this.user.mangas.forEach(manga => allMangaIds.push(manga.mangaId));
+      if (allMangaIds.includes(this.mangaId)) {
+        const payload = {
+          mangaId: this.mangaId,
+          newStatus: option.type,
+          token
+        };
+        console.log(payload);
+        this.$store.dispatch("mangas/updateStatus", payload);
+      } else {
+        const payload = {
+          mangaId: this.mangaId,
+          status: option.type,
+          name: this.manga.title
+        };
+        this.$store.dispatch("mangas/addManga", { payload, token });
+      }
     }
   },
   computed: {

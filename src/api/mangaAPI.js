@@ -16,3 +16,13 @@ export const updateStatusPromise = payload => {
     }
   );
 };
+
+export const addMangaPromise = ({ payload, token }) => {
+  console.log(payload, token);
+  return axios.post(`${BASE_URL}/`, payload, {
+    headers: {
+      Authorization: `${token}`,
+      "Content-Type": "application/json"
+    }
+  });
+};
