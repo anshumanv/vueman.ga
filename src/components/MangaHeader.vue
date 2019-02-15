@@ -1,9 +1,21 @@
 <template>
   <v-layout row wrap class="mb-3">
     <v-flex xs12 sm5 md3 lg3>
-      <v-img :src="`https://cdn.mangaeden.com/mangasimg/${manga.image}`" class="grey lighten-2">
-        <v-layout slot="placeholder" fill-height align-center justify-center ma-0>
-          <v-progress-circular indeterminate color="grey lighten-5"></v-progress-circular>
+      <v-img
+        :src="`https://cdn.mangaeden.com/mangasimg/${manga.image}`"
+        class="grey lighten-2"
+      >
+        <v-layout
+          slot="placeholder"
+          fill-height
+          align-center
+          justify-center
+          ma-0
+        >
+          <v-progress-circular
+            indeterminate
+            color="grey lighten-5"
+          ></v-progress-circular>
         </v-layout>
       </v-img>
     </v-flex>
@@ -22,22 +34,36 @@
           <div class="display-1">{{ manga.title }}</div>
         </v-flex>
         <v-layout class="genres hidden-sm-and-down mt-1" row>
-          <div v-for="genre in manga.categories" :key="genre" class="text-xs-center">
-            <v-chip color="#212121" class="body-2 white--text">{{ genre }}</v-chip>
+          <div
+            v-for="genre in manga.categories"
+            :key="genre"
+            class="text-xs-center"
+          >
+            <v-chip color="#212121" class="body-2 white--text">{{
+              genre
+            }}</v-chip>
           </div>
         </v-layout>
-        <v-layout row v-if="loggedIn" class="text-xs-center">
-          <v-select
-            :items="mangaTypes"
-            :label="this.checkType"
-            dense
-            item-text="text"
-            return-object
-            solo
-            v-on:change="this.handleTypeChange"
-            class="ma-2"
-          ></v-select>
-          <v-icon>{{ this.favoriteStatus }}</v-icon>
+        <v-layout
+          align-center
+          justify-start
+          row
+          v-if="loggedIn"
+          class="manga-user-data"
+        >
+          <v-flex xs12 sm md8 lg6 class="mflex">
+            <v-select
+              :items="mangaTypes"
+              :label="this.checkType"
+              dense
+              item-text="text"
+              return-object
+              solo
+              v-on:change="this.handleTypeChange"
+              class="ma-2"
+            ></v-select>
+            <v-icon>{{ this.favoriteStatus }}</v-icon>
+          </v-flex>
         </v-layout>
         <div class="mt-2">{{ manga.description }}</div>
       </v-layout>
@@ -124,7 +150,7 @@ export default {
 </script>
 
 <style scoped>
-.genre-chips {
+.mflex {
   display: flex;
   flex-wrap: wrap;
 }
