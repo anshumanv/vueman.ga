@@ -64,15 +64,15 @@ export default {
     username: "",
     nameRules: [
       v => !!v || "Name is required",
-      v => (v && v.length <= 10) || "Name must be less than 10 characters"
+      v => (v && v.length <= 20) || "Name must be less than 10 characters"
     ],
     usernameRules: [
       v => !!v || "Username is required",
-      v => (v && v.length <= 3) || "Username must be greater than 3 characters"
+      v => (v && v.length >= 3) || "Username must be greater than 3 characters"
     ],
     passwordRules: [
       v => !!v || "Password is required",
-      v => (v && v.length <= 10) || "Password must be greater than 5 characters"
+      v => (v && v.length >= 5) || "Password must be greater than 5 characters"
     ],
     emailRules: [
       v => !!v || "E-mail is required",

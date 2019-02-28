@@ -1,6 +1,7 @@
 import axios from "axios";
+import { SERVER_URL } from '../config';
 
-const BASE_URL = "http://localhost:5000/api/users";
+const BASE_URL = `${SERVER_URL}/api/users`;
 
 // const tokenHeader = token => {
 //   return `Authorization': "Bearer" ${token}}`;
