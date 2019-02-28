@@ -1,1 +1,1 @@
-export const SERVER_URL = "https://vuemanga-server.glitch.me"
+export const SERVER_URL = "https://vuemanga-server.glitch.me";

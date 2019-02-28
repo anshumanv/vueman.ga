@@ -40,6 +40,7 @@ const actions = {
 // mutations
 const mutations = {
   updateMangaStatus(state, updatedManga) {
+    let manga;
     for (manga in state.myMangas) {
       if (manga.mangaId === updatedManga.mangaId) {
         manga.status = updatedManga.mangaId;
