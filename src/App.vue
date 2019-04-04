@@ -19,7 +19,7 @@
           <v-list-tile
             v-for="(item, i) in dropdown_options"
             :key="i"
-            @click="toolbarDropdown(item.path)"
+            @click="toolbarDropdown(item)"
           >
             <v-list-tile-title>{{ item.text }}</v-list-tile-title>
           </v-list-tile>
@@ -40,7 +40,7 @@
 
 <script>
 import jwt_decode from "jwt-decode";
-import { mapState, mapGetters } from "vuex";
+import { mapState, mapGetters, mapActions } from "vuex";
 import LoginDialog from "./components/LoginDialog";
 
 export default {
@@ -49,7 +49,7 @@ export default {
     return {
       dropdown_options: [
         { text: "Profile", path: "profile" },
-        { text: "Logout", path: "logout" },
+        { text: "Logout", path: "logout", action: "logout" },
         { text: "Settings", path: "settings" }
       ]
     };
@@ -68,10 +68,17 @@ export default {
     LoginDialog
   },
   methods: {
+    ...mapActions({
+      logout: "auth/logout"
+    }),
     toHome: function() {
       this.$router.push({ path: "/" });
     },
-    toolbarDropdown: function(path) {
+    toolbarDropdown: function(item) {
+      const { path, action } = item;
+      if (action) {
+        this[action]();
+      }
       this.$router.push({ path });
     }
   },
