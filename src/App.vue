@@ -13,8 +13,8 @@
         <span><v-icon>home</v-icon></span>
       </v-btn>
       <LoginDialog v-if="!loggedIn" />
-      <v-menu transition="slide-y-transition" bottom>
-        <v-btn slot="activator" class="purple" color="primary" dark> ✨ </v-btn>
+      <v-menu transition="slide-y-transition" bottom v-if="loggedIn">
+        <v-btn slot="activator" color="#424242" dark>{{ user.username }}</v-btn>
         <v-list>
           <v-list-tile
             v-for="(item, i) in dropdown_options"
