@@ -51,8 +51,8 @@ export default {
     // TODO: Add cornet case checks for loading more mangas
     loadMore: function() {
       const newMangas = this.allMangas.slice(
-        24 * this.page + 1,
-        24 * this.page + 13
+        23 * this.page + 1,
+        23 * this.page + 13
       );
       this.mangas.push(...newMangas);
       this.page++;
