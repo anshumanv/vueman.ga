@@ -52,7 +52,7 @@ export default {
     loadMore: function() {
       const newMangas = this.allMangas.slice(
         23 * this.page + 1,
-        23 * this.page + 13
+        23 * this.page + 25
       );
       this.mangas.push(...newMangas);
       this.page++;
