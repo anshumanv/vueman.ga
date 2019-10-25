@@ -1,5 +1,6 @@
 <template>
   <v-app dark>
+    <snackbar />
     <!-- Toolbar -->
     <v-toolbar app>
       <v-toolbar-title
@@ -42,6 +43,7 @@
 import jwt_decode from "jwt-decode";
 import { mapState, mapGetters, mapActions } from "vuex";
 import LoginDialog from "./components/LoginDialog";
+import Snackbar from "./components/Snackbar";
 
 export default {
   name: "App",
@@ -65,7 +67,8 @@ export default {
     })
   },
   components: {
-    LoginDialog
+    LoginDialog,
+    Snackbar
   },
   methods: {
     ...mapActions({
