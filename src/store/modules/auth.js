@@ -28,7 +28,7 @@ const actions = {
       })
       .catch(err => console.log(err));
   },
-  login({ commit, state }, payload) {
+  login({ commit, state, dispatch }, payload) {
     loginPromise(payload)
       .then(res => {
         const { token } = res.data;
@@ -41,7 +41,13 @@ const actions = {
         });
         // commit("userLogin", decoded);
       })
-      .catch(err => console.log(err));
+      .catch(err =>
+        dispatch(
+          "snackbar/ShowErrorSnackbar",
+          { text: err.response.data.error },
+          { root: true }
+        )
+      );
   },
   logout({ commit, state }) {
     localStorage.removeItem("jwtToken");

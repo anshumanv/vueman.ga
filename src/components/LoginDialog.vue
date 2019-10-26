@@ -29,12 +29,7 @@
             required
           ></v-text-field>
 
-          <v-btn
-            type="submit"
-            :disabled="!valid"
-            color="success"
-            @click="submitForm"
-          >
+          <v-btn type="submit" :disabled="!valid" color="success">
             Submit
           </v-btn>
         </v-form>
@@ -57,7 +52,8 @@ export default {
       passwordRules: [
         v => !!v || "Password is required",
         v =>
-          (v && v.length >= 5 && v.length <= 16 ) || "Length of password must be between 5 and 16"
+          (v && v.length >= 5 && v.length <= 16) ||
+          "Length of password must be between 5 and 16"
       ],
       emailRules: [
         v => !!v || "E-mail is required",

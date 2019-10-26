@@ -3,6 +3,7 @@ import Vuex from "vuex";
 import auth from "./modules/auth";
 import profile from "./modules/profile";
 import mangas from "./modules/manga";
+import snackbar from "./modules/snackbar";
 
 Vue.use(Vuex);
 
@@ -12,7 +13,8 @@ export default new Vuex.Store({
   modules: {
     auth,
     profile,
-    mangas
+    mangas,
+    snackbar
   },
   strict: debug
 });
