@@ -2,6 +2,7 @@ import { register, loginPromise } from "../../api/authAPI";
 import { profilePromise } from "../../api/profileAPI";
 import setAuthHeader from "../../utils/setAuthToken";
 import jwt_decode from "jwt-decode";
+import router from "@/router";
 
 const state = {
   user: {},
@@ -20,13 +21,26 @@ const getters = {
 
 // Actions
 const actions = {
-  signup({ commit, state }, payload) {
+  signup({ commit, state, dispatch }, payload) {
     register(payload)
       .then(res => {
         console.log(res.data.user);
         commit("userSignedUp", res.data.user);
+        dispatch(
+          "snackbar/ShowSuccessSnackbar",
+          { text: "Successfully registered" },
+          { root: true }
+        );
+        router.push({ path: "/" });
       })
-      .catch(err => console.log(err));
+      .catch(err =>
+        dispatch(
+          "snackbar/ShowErrorSnackbar",
+          { text: err.response.data.error },
+          { root: true }
+        )
+      );
+    // .catch(err => console.log(err));
   },
   login({ commit, state, dispatch }, payload) {
     loginPromise(payload)
@@ -39,6 +53,11 @@ const actions = {
         profilePromise(decoded.username).then(res => {
           commit("userLogin", res.data.user);
         });
+        dispatch(
+          "snackbar/ShowSuccessSnackbar",
+          { text: "Successfully logged in" },
+          { root: true }
+        );
         // commit("userLogin", decoded);
       })
       .catch(err =>
@@ -49,10 +68,15 @@ const actions = {
         )
       );
   },
-  logout({ commit, state }) {
+  logout({ commit, state, dispatch }) {
     localStorage.removeItem("jwtToken");
     setAuthHeader(false);
     commit("userLogout");
+    dispatch(
+      "snackbar/ShowSuccessSnackbar",
+      { text: "Successfully logged out" },
+      { root: true }
+    );
   },
   saveUser({ commit, state }, token) {
     const decoded = jwt_decode(token);
