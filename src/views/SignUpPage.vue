@@ -100,8 +100,10 @@ export default {
           password,
           name
         };
-        this.$store.dispatch("auth/signup", payload);
-        this.snackbar = true;
+        this.$store.dispatch("auth/signup", payload).then(() => {
+          this.reset();
+          this.$router.push("/");
+        });
       }
     },
     reset() {

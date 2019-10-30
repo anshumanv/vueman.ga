@@ -2,6 +2,7 @@
   <div class="manga-card">
     <router-link :to="`/manga/${manga.i}`">
       <v-img
+        v-if="manga.im"
         class="manga-img"
         :src="`https://cdn.mangaeden.com/mangasimg/${manga.im}`"
         height="100%"

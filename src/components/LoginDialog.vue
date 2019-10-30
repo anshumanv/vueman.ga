@@ -80,8 +80,11 @@ export default {
           email,
           password
         };
-        this.$store.dispatch("auth/login", payload);
-        this.snackbar = true;
+        this.$store.dispatch("auth/login", payload).then(() => {
+          this.reset();
+          this.showLoginDialog = false;
+          this.$router.push({ path: "/" });
+        });
       }
     },
     reset() {
