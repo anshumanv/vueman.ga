@@ -1,32 +1,16 @@
 <template>
-  <div class="manga-card">
-    <router-link :to="`/manga/${manga.i}`">
-      <v-img
-        v-if="manga.im"
-        class="manga-img"
-        :src="`https://cdn.mangaeden.com/mangasimg/${manga.im}`"
-        height="100%"
-      >
-        <v-layout
-          slot="placeholder"
-          fill-height
-          align-center
-          justify-center
-          ma-0
-        >
-          <v-progress-circular
-            indeterminate
-            color="grey lighten-5"
-          ></v-progress-circular>
-        </v-layout>
-      </v-img>
-    </router-link>
-    <router-link :to="`/manga/${manga.i}`" :title="manga.t">
-      <div class="subheading font-weight-medium white--text text-truncate">
-        {{ manga.t }}
-      </div>
-    </router-link>
-  </div>
+  <router-link :to="`/manga/${manga.i}`">
+    <img
+      v-if="manga.im"
+      class="manga-img"
+      :alt="manga.t"
+      :src="`https://cdn.mangaeden.com/mangasimg/${manga.im}`"
+    />
+    <img v-else class="manga-img" src="noimage.jpg" alt="no image" />
+    <div class="subheading font-weight-medium white--text text-truncate my-2">
+      {{ manga.t }}
+    </div>
+  </router-link>
 </template>
 
 <script>
@@ -37,7 +21,11 @@ export default {
 </script>
 
 <style scoped>
-.manga-card {
-  margin: 0.5rem;
+.manga-img {
+  display: block;
+  margin: 0;
+  width: 100%;
+  height: auto;
+  border-radius: 12px;
 }
 </style>

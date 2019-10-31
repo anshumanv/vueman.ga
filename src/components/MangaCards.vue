@@ -1,36 +1,39 @@
 <template>
-  <v-container grid-list-md text-xs-center>
-    <v-layout row wrap>
-      <v-flex
-        v-for="manga in mangas"
-        :key="manga.i"
-        xl2
-        md3
-        sm4
-        xs12
-        grow
-        align-self-end
-      >
-        <MangaCard :manga="manga" />
-      </v-flex>
-    </v-layout>
-  </v-container>
+  <Stack
+    :column-min-width="225"
+    :gutter-width="8"
+    :gutter-height="8"
+    monitor-images-loaded
+  >
+    <StackItem v-for="manga in mangas" :key="manga.i" class="img-container">
+      <MangaCard :manga="manga"></MangaCard>
+    </StackItem>
+  </Stack>
 </template>
 
 <script>
 import MangaCard from "./MangaCard";
+import { Stack, StackItem } from "vue-stack-grid";
 
 export default {
   name: "MangaCards",
   props: ["mangas"],
   components: {
-    MangaCard
+    MangaCard,
+    Stack,
+    StackItem
   }
 };
 </script>
 
 <style scoped>
-.manga-flex {
-  align-items: flex-end;
+.img-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  margin: 0;
+  object-fit: fill;
+  cursor: pointer;
 }
 </style>
